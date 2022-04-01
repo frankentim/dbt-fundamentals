@@ -1,0 +1,12 @@
+version: 2
+
+sources:
+ - name: stripe
+   database: SANDBOX
+   schema: TIMFRANKEN
+   tables:
+    - name: payment_stripe_raw
+      loaded_at_field: _batched_at
+      freshness:
+        warn_after: {count: 12, period: hour}
+        error_after: {count: 20000, period: hour}
